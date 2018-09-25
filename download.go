@@ -11,26 +11,11 @@ type Greeter interface {
 }
 
 type DownloadIDE interface {
-	DownloadFile()
+	DownloadFile(u string)
 }
 
 func main() {
-	// determine module to load
-	// lang := "english"
-	// if len(os.Args) == 2 {
-	// 	lang = os.Args[1]
-	// }
-	// var mod string
-	// switch lang {
-	// case "english":
-	// 	mod = "./eng/eng.so"
-	// case "chinese":
-	// 	mod = "./chi/chi.so"
-	// default:
-	// 	fmt.Println("don't speak that language")
-	// 	os.Exit(1)
-	// }
-
+	fmt.Printf("url %s\n", os.Args)
 	// load module
 	// 1. open the so file to load the symbols
 	plug, err := plugin.Open("./download/download.so")
@@ -49,12 +34,6 @@ func main() {
 
 	// 3. Assert that loaded symbol is of a desired type
 	// in this case interface type Greeter (defined above)
-	// var greeter Greeter
-	// greeter, ok := symGreeter.(Greeter)
-	// if !ok {
-	// 	fmt.Println("unexpected type from module symbol")
-	// 	os.Exit(1)
-	// }
 
 	var download DownloadIDE
 	download, ok := symGreeter.(DownloadIDE)
@@ -64,6 +43,6 @@ func main() {
 	}
 	// 4. use the module
 	// greeter.Greet()
-	download.DownloadFile()
+	download.DownloadFile(os.Args[1])
 
 }
