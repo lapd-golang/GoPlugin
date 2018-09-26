@@ -25,24 +25,21 @@ func main() {
 	}
 
 	// 2. look up a symbol (an exported function or variable)
-	// in this case, variable Greeter
-	symGreeter, err := plug.Lookup("DownloadIDE")
+	downloadIDE, err := plug.Lookup("DownloadIDE")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
 	// 3. Assert that loaded symbol is of a desired type
-	// in this case interface type Greeter (defined above)
 
 	var download DownloadIDE
-	download, ok := symGreeter.(DownloadIDE)
+	download, ok := downloadIDE.(DownloadIDE)
 	if !ok {
-		fmt.Printf("----unexpected type from module symbol %s %s\n", ok, symGreeter)
+		fmt.Printf("----unexpected type from module symbol %s %s\n", ok, downloadIDE)
 		os.Exit(1)
 	}
 	// 4. use the module
-	// greeter.Greet()
 	download.DownloadFile(os.Args[1])
 
 }

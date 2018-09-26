@@ -1,6 +1,7 @@
 package main
 
 import (
+	"time"
 	"io"
 	"net/http"
 	"os"
@@ -21,7 +22,8 @@ type urlString string
 // write as it downloads and not load the whole file into memory.
 func (u urlString) DownloadFile(url string) {
 	// url := string(u) //"https://golangcode.com/images/avatar.jpg"
-	filepath := "avatar.jpg"
+	now := time.Now().String()
+	filepath := "image" + now + ".jpg"
 	println("Download at____%s", filepath)
 	// Create the file
 	out, err := os.Create(filepath)
