@@ -1,10 +1,11 @@
 package main
 
 import (
-	"time"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
 // type greeting string
@@ -24,28 +25,28 @@ func (u urlString) DownloadFile(url string) {
 	// url := string(u) //"https://golangcode.com/images/avatar.jpg"
 	now := time.Now().String()
 	filepath := "image" + now + ".jpg"
-	println("Download at____%s", filepath)
+	fmt.Println("Download at____%s", filepath)
 	// Create the file
 	out, err := os.Create(filepath)
 	if err != nil {
-		println("error 1:-->", err, 1)
+		fmt.Println("error 1:-->", err, 1)
 	}
 	defer out.Close()
 
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
-		println("error 2:-->", err, url)
+		fmt.Println("error 2:-->", err, url)
 	}
 	defer resp.Body.Close()
 
 	// Write the body to file
 	_, err = io.Copy(out, resp.Body)
 	if err != nil {
-		println("error 3:-->%s", err)
+		fmt.Println("error 3:-->%s", err)
 	}
 
-	println("---->>>Done Download url:%s", url)
+	fmt.Printf("---->>>Done Download url:%s", url)
 }
 
 var DownloadIDE urlString
