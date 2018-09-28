@@ -5,7 +5,7 @@ import "fmt"
 type greeting string
 
 func (g greeting) Greet() {
-	fmt.Printf("\nHello Golang Plugin\n")
+	fmt.Printf("\nHi there welcom to Golang\n")
 }
 
 var Greeter greeting

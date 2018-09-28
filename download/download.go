@@ -29,24 +29,25 @@ func (u urlString) DownloadFile(url string) {
 	// Create the file
 	out, err := os.Create(filepath)
 	if err != nil {
-		fmt.Println("error 1:-->", err, 1)
+		fmt.Println("\nerror 1:-->", err, 1)
 	}
 	defer out.Close()
 
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println("error 2:-->", err, url)
+		fmt.Println("\nerror 2:-->\n", err, url)
 	}
 	defer resp.Body.Close()
 
 	// Write the body to file
 	_, err = io.Copy(out, resp.Body)
 	if err != nil {
-		fmt.Println("error 3:-->%s", err)
+		fmt.Println("\nerror 3:-->%s\n", err)
 	}
 
-	fmt.Printf("---->>>Done Download url:%s", url)
+	fmt.Printf("\n---->>>Done Download url:%s", url)
+	fmt.Println("\n")
 }
 
 var DownloadIDE urlString

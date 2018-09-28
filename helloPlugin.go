@@ -16,7 +16,7 @@ type DownloadIDE interface {
 
 func main() {
 	fmt.Printf("url---> %s\n", os.Args)
-	task := "Plugin"
+	task := "Hi!"
 	if len(os.Args) >= 2 {
 		task = os.Args[1]
 	}
@@ -24,10 +24,10 @@ func main() {
 	switch task {
 	case "download":
 		mod = "./download/download.so"
-	case "HelloPlugin":
+	case "Hi!":
 		mod = "./helloworld/greeter.so"
 	default:
-		fmt.Println("don't speak that language")
+		fmt.Printf("\nWrong command. Use download or Hi! \n")
 		os.Exit(1)
 	}
 
@@ -55,7 +55,7 @@ func downloadFile(url string, plug *plugin.Plugin) {
 	var download DownloadIDE
 	download, ok := downloadIDE.(DownloadIDE)
 	if !ok {
-		fmt.Printf("----unexpected type from module symbol %s %s\n", ok, downloadIDE)
+		fmt.Printf("\n----unexpected type from module symbol %s %s\n", ok, downloadIDE)
 		os.Exit(1)
 	}
 	// 4. use the module
