@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"plugin"
+	"C"
 )
 
 type Greeter interface {
@@ -15,7 +16,7 @@ type DownloadIDE interface {
 }
 
 func main() {
-	fmt.Printf("Args---> %s\n", os.Args)
+	// fmt.Printf("Args---> %s\n", os.Args)
 	task := "hello"
 	if len(os.Args) >= 2 {
 		task = os.Args[1]
