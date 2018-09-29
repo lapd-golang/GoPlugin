@@ -20,7 +20,6 @@ func main() {
 	if len(os.Args) >= 2 {
 		task = os.Args[1]
 	}
-	fmt.Printf("TASK IS: [%s] [%s]\n", task, task == "hello")
 	var mod string
 	switch task {
 	case "download":
@@ -55,7 +54,7 @@ func downloadFile(url string, plug *plugin.Plugin) {
 	var download DownloadIDE
 	download, ok := downloadIDE.(DownloadIDE)
 	if !ok {
-		fmt.Printf("\n----unexpected type from module symbol %s %s\n", ok, downloadIDE)
+		fmt.Printf("\n----downloadFile unexpected type from module symbol")
 		os.Exit(1)
 	}
 	// 4. use the module
@@ -66,7 +65,7 @@ func printHelloWord(plug *plugin.Plugin) {
 	fmt.Println("---------->>>")
 	symGreeter, err := plug.Lookup("Greeter")
 	if err != nil {
-		fmt.Println("Error--->%s", err)
+		fmt.Println("printHelloWord Error--->", err)
 		os.Exit(1)
 	}
 	// 3. Assert that loaded symbol is of a desired type

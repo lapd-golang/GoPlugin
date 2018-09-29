@@ -15,7 +15,7 @@ type urlString string
 func (u urlString) DownloadFile(url string) {
 	now := time.Now().String()
 	filepath := "./resources" + "image" + now + ".jpg"
-	fmt.Println("Download at____%s", filepath)
+	fmt.Println("Download at____", filepath)
 	// Create the file
 	out, err := os.Create(filepath)
 	if err != nil {
@@ -33,11 +33,11 @@ func (u urlString) DownloadFile(url string) {
 	// Write the body to file
 	_, err = io.Copy(out, resp.Body)
 	if err != nil {
-		fmt.Println("\nerror 3:-->%s\n", err)
+		fmt.Println("\nerror 3:-->\n", err)
 	}
 
 	fmt.Printf("\n---->>>Done Download url:%s", url)
-	fmt.Println("\n")
+	fmt.Printf("\n")
 }
 
 var DownloadIDE urlString
