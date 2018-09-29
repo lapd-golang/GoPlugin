@@ -8,23 +8,13 @@ import (
 	"time"
 )
 
-// type greeting string
-
-// func (g greeting) Greet() {
-// 	fmt.Println("Hello Universe")
-// }
-
-// // exported
-// var Greeter greeting
-
 type urlString string
 
 // DownloadFile will download a url to a local file. It's efficient because it will
 // write as it downloads and not load the whole file into memory.
 func (u urlString) DownloadFile(url string) {
-	// url := string(u) //"https://golangcode.com/images/avatar.jpg"
 	now := time.Now().String()
-	filepath := "image" + now + ".jpg"
+	filepath := "./resources" + "image" + now + ".jpg"
 	fmt.Println("Download at____%s", filepath)
 	// Create the file
 	out, err := os.Create(filepath)

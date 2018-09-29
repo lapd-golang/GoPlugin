@@ -15,22 +15,22 @@ type DownloadIDE interface {
 }
 
 func main() {
-	fmt.Printf("url---> %s\n", os.Args)
-	task := "Hi!"
+	fmt.Printf("Args---> %s\n", os.Args)
+	task := "hello"
 	if len(os.Args) >= 2 {
 		task = os.Args[1]
 	}
+	fmt.Printf("TASK IS: [%s] [%s]\n", task, task == "hello")
 	var mod string
 	switch task {
 	case "download":
 		mod = "./download/download.so"
-	case "Hi!":
+	case "hello":
 		mod = "./helloworld/greeter.so"
 	default:
-		fmt.Printf("\nWrong command. Use download or Hi! \n")
+		fmt.Printf("\nWrong command. Use download or hello \n")
 		os.Exit(1)
 	}
-
 	// load module
 	// 1. open the so file to load the symbols
 	plug, err := plugin.Open(mod)
@@ -63,6 +63,7 @@ func downloadFile(url string, plug *plugin.Plugin) {
 }
 
 func printHelloWord(plug *plugin.Plugin) {
+	fmt.Println("---------->>>")
 	symGreeter, err := plug.Lookup("Greeter")
 	if err != nil {
 		fmt.Println("Error--->%s", err)
