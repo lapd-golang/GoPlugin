@@ -1,10 +1,10 @@
 package main
 
 import (
+	"C"
 	"fmt"
 	"os"
 	"plugin"
-	"C"
 )
 
 type Greeter interface {
@@ -47,6 +47,7 @@ func main() {
 }
 
 func downloadFile(url string, plug *plugin.Plugin) {
+	fmt.Println("Start download")
 	downloadIDE, err := plug.Lookup("DownloadIDE")
 	if err != nil {
 		fmt.Println(err)
@@ -63,7 +64,6 @@ func downloadFile(url string, plug *plugin.Plugin) {
 }
 
 func printHelloWord(plug *plugin.Plugin) {
-	fmt.Println("---------->>>")
 	symGreeter, err := plug.Lookup("Greeter")
 	if err != nil {
 		fmt.Println("printHelloWord Error--->", err)
