@@ -1,7 +1,13 @@
 # Go Plugin Example
 
+### Compiling the Plugins
+The plugin package is compiled using the normal Go toolchain.  The only requirement is to use the `buildmode=plugin` compilation flag as shown below:
 
-## A Pluggable Greeting System
+```
+go build -buildmode=plugin -o download/download.so download/download.go
+go build -buildmode=plugin -o helloworld/greeter.so helloworld/greeter.go
+
+## A Pluggable helloPlugin System
 The demo in this repository implements a simple greeting and download files system.  Each plugin package (directories `./download` and `./helloworld`) implements code that prints a greeting meesage and donwload files url.  File `./helloPlugin.go` uses the new Go `plugin` package to load the pluggable modules and run the proper method using passed command-line parameters.
 
 For instance, when the program is executed it prints a greeting message 
