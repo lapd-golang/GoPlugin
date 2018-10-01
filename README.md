@@ -19,5 +19,3 @@ Download at____%s /Users/nhatle/go/src/go-plugin-example/resourcesimage2018-10-0
 ---->>>Done Download url:http://images.fanpop.com/images/image_uploads/New-York-new-york-186897_1024_768.jpg
 ```
 As you can see, the capability of the driver program is dynamically expanded by the plugins allowing it to display a greeting message or download a file without the need to recompile the program.
-
-Let us see how this is done.
